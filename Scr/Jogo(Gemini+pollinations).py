@@ -10,7 +10,7 @@ from tkinter import filedialog  # Necessário para abrir a janela de salvar fich
 from Keys import *
 
 # AI Text Model - Identificador oficial ativo no teu AI Studio
-ai_model = "gemini-3-flash-preview"
+ai_model = "gemini-4-hydrogen"#"gemini-3.8-flash" #"gemini-3-flash-preview"
 
 # 1. CONFIGURAÇÃO VISUAL DA INTERFACE
 ctk.set_appearance_mode("Dark")
@@ -212,13 +212,11 @@ class JanelaJogo(ctk.CTk):
 
             # --- 🧠 FILTRO HÍBRIDO (Gatilhos + Comparação de Cenário) ---
             # 1. Palavras que indicam que o utilizador quer uma alteração visual
-            palavras_gatilho = ["gera", "projeta", "cria", "muda", "simula", "coloca", "materializa", "transforma", "bola", "roblox", "quadrado", "cubo", "floresta", "cidade","ir","vamos","bora","olhar","espreitar","jogar", "quero", "mudar", "alterar", "transformar", "simular", "projetar", "materializar", "criar", "gerar", "colocar", "desenhar", "construir", "imaginar", "visualizar", "explorar", "entrar", "sair", "olhar para", "espreitar", "interagir", "ver", "olhar", "espreitar", "interagir", "explorar", "entrar", "sair", "mudar", "alterar", "transformar", "simular", "projetar", "materializar", "criar", "gerar", "colocar", "desenhar", "construir", "imaginar", "visualizar", "explorar", "construir", "visualizar","gostaria"]
+            palavras_gatilho = ["gera", "projeta", "cria", "muda", "simula", "coloca", "materializa", "transforma", "bola", "roblox", "quadrado", "cubo", "floresta", "cidade","ir","vamos","bora","olhar","espreitar","jogar", "quero", "mudar", "alterar", "transformar", "simular", "projetar", "materializar", "criar", "gerar", "colocar", "desenhar", "construir", "imaginar", "visualizar", "explorar", "entrar", "sair", "olhar para", "espreitar", "interagir", "ver", "olhar", "espreitar", "interagir", "explorar", "entrar", "sair", "mudar", "alterar", "transformar", "simular", "projetar", "materializar", "criar", "gerar", "colocar", "desenhar", "construir", "imaginar", "visualizar", "explorar", "construir", "visualizar","gostaria","fazer um", "fazer uma","disparar"]
+            resposta_gatilho = [""]
             acao_minuscula = acao.lower()
             resposta_minuscula = narrativa.lower()
-            if any(gatilho in acao_minuscula for gatilho in palavras_gatilho):
-                contem_gatilho = any(gatilho in acao_minuscula for gatilho in palavras_gatilho) or any(gatilho in resposta_minuscula for gatilho in palavras_gatilho)
-            else:
-                contem_gatilho = any(gatilho in resposta_minuscula for gatilho in palavras_gatilho)
+            contem_gatilho = any(gatilho in acao_minuscula for gatilho in palavras_gatilho) #or any(gatilho in resposta_minuscula for gatilho in palavras_gatilho)
             
             # 2. Verifica se o prompt gerado pela IA realmente mudou face ao anterior
             prompt_mudou = prompt_visual_ia.lower() != self.ultimo_prompt_visual.lower()
